@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Master Skills Center - Horloge Multi-Fuseaux</title>
+    <link rel="stylesheet" href="clock-styles.css">
+    <!-- Font Awesome pour les icônes -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- ================================
+         NAVBAR
+         ================================ -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">
+                <i class="fas fa-clock"></i>
+                <span>Master Skills Center</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#home">Accueil</a></li>
+                <li><a href="#clocks">Horloges</a></li>
+                <li><a href="#formations">Formations</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ================================
+         HEADER / ACCUEIL
+         ================================ -->
+    <section class="header" id="home">
+        <h1>
+            <i class="fas fa-globe"></i>
+            Master Skills Center - Horloge Mondiale
+        </h1>
+        <p>Gérez les fuseaux horaires de vos formations en temps réel</p>
+    </section>
+
+    <!-- ================================
+         CONTROLS (Boutons de contrôle)
+         ================================ -->
+    <div class="controls">
+        <button class="btn btn-add" id="addClockBtn">
+            <i class="fas fa-plus"></i>
+            Ajouter une horloge
+        </button>
+        <button class="btn btn-reset" id="resetBtn">
+            <i class="fas fa-redo"></i>
+            Réinitialiser
+        </button>
+        <div class="format-toggle">
+            <label>
+                <input type="checkbox" id="format12" checked>
+                Format 12h
+            </label>
+        </div>
+    </div>
+
+    <!-- ================================
+         CLOCKS GRID (Grille d'horloges)
+         ================================ -->
+    <div class="container">
+        <div class="clocks-grid" id="clocksGrid">
+            <!-- Les horloges seront ajoutées ici par JavaScript -->
+        </div>
+
+        <!-- Empty State (État vide) -->
+        <div class="empty-state" id="emptyState">
+            <i class="fas fa-inbox"></i>
+            <h2>Aucune horloge ajoutée</h2>
+            <p>Cliquez sur le bouton "Ajouter une horloge" pour commencer</p>
+        </div>
+    </div>
+
+    <!-- ================================
+         MODAL - Ajouter une horloge
+         ================================ -->
+    <div class="modal" id="addClockModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Ajouter une horloge</h2>
+                <button class="close-btn" id="closeModalBtn">&times;</button>
+            </div>
+            <input 
+                type="text" 
+                id="searchInput" 
+                class="search-input" 
+                placeholder="Rechercher un fuseau horaire (ex: Paris, Tokyo, New York)..."
+            >
+            <div class="timezone-list" id="timezoneList">
+                <!-- La liste des fuseaux horaires sera remplie par JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ================================
+         SECTION FORMATIONS (Exemple)
+         ================================ -->
+    <section class="formations-section" id="formations">
+        <div class="container">
+            <h2 style="text-align: center; margin: 3rem 0; color: var(--secondary-color);">
+                <i class="fas fa-graduation-cap"></i>
+                Nos Formations
+            </h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                <div class="formation-card" style="background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 2px solid var(--border-color);">
+                    <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">Formation Web</h3>
+                    <p>Apprenez HTML, CSS, JavaScript et plus encore...</p>
+                </div>
+                <div class="formation-card" style="background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 2px solid var(--border-color);">
+                    <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">Formation Mobile</h3>
+                    <p>Développez des applications mobiles modernes...</p>
+                </div>
+                <div class="formation-card" style="background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 2px solid var(--border-color);">
+                    <h3 style="color: var(--secondary-color); margin-bottom: 1rem;">Formation Backend</h3>
+                    <p>Maîtrisez les bases de données et les serveurs...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         SECTION STATISTIQUES
+         ================================ -->
+    <section style="margin: 4rem 0; text-align: center;">
+        <h2 style="color: var(--secondary-color); margin-bottom: 3rem;">Nos Statistiques</h2>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem;">
+            <div class="stat-card" style="background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 2px solid var(--border-color);">
+                <h4 style="font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 0.5rem;">500+</h4>
+                <p style="color: var(--text-muted);">Apprenants</p>
+            </div>
+            <div class="stat-card" style="background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 2px solid var(--border-color);">
+                <h4 style="font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 0.5rem;">50+</h4>
+                <p style="color: var(--text-muted);">Formations</p>
+            </div>
+            <div class="stat-card" style="background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 2px solid var(--border-color);">
+                <h4 style="font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 0.5rem;">4.8/5</h4>
+                <p style="color: var(--text-muted);">Satisfaction</p>
+            </div>
+            <div class="stat-card" style="background: var(--card-bg); padding: 2rem; border-radius: 12px; border: 2px solid var(--border-color);">
+                <h4 style="font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 0.5rem;">100%</h4>
+                <p style="color: var(--text-muted);">Taux réussite</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================================
+         FORMULAIRE DE CONTACT
+         ================================ -->
+    <section class="contact-section" id="contact" style="margin: 4rem 0; padding: 3rem; background: var(--card-bg); border-radius: 12px;">
+        <div class="container">
+            <h2 style="text-align: center; color: var(--secondary-color); margin-bottom: 2rem;">
+                <i class="fas fa-envelope"></i>
+                Nous Contacter
+            </h2>
+            <form class="contact-form" style="max-width: 600px; margin: 0 auto;">
+                <div style="margin-bottom: 1.5rem;">
+                    <input 
+                        type="text" 
+                        placeholder="Votre nom" 
+                        required
+                        style="width: 100%; padding: 12px; border: 2px solid var(--border-color); background: var(--light-bg); color: var(--text-color); border-radius: 8px; font-size: 1rem;"
+                    >
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <input 
+                        type="email" 
+                        placeholder="Votre email" 
+                        required
+                        style="width: 100%; padding: 12px; border: 2px solid var(--border-color); background: var(--light-bg); color: var(--text-color); border-radius: 8px; font-size: 1rem;"
+                    >
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <input 
+                        type="tel" 
+                        placeholder="Votre téléphone" 
+                        required
+                        style="width: 100%; padding: 12px; border: 2px solid var(--border-color); background: var(--light-bg); color: var(--text-color); border-radius: 8px; font-size: 1rem;"
+                    >
+                </div>
+                <div style="margin-bottom: 1.5rem;">
+                    <textarea 
+                        placeholder="Votre message" 
+                        rows="5" 
+                        required
+                        style="width: 100%; padding: 12px; border: 2px solid var(--border-color); background: var(--light-bg); color: var(--text-color); border-radius: 8px; font-size: 1rem; resize: vertical;"
+                    ></textarea>
+                </div>
+                <button 
+                    type="submit" 
+                    class="btn btn-add"
+                    style="width: 100%; justify-content: center;"
+                >
+                    <i class="fas fa-send"></i>
+                    Envoyer le message
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ================================
+         TOAST NOTIFICATION
+         ================================ -->
+    <div class="toast" id="toast"></div>
+
+    <!-- ================================
+         SCRIPT
+         ================================ -->
+    <script src="script.js"></script>
+    
+    <!-- Script supplémentaire pour l'horloge -->
+    <script>
+        // Liste des fuseaux horaires courants
+        const timezones = [
+            { name: 'Paris', timezone: 'Europe/Paris', flag: '🇫🇷', offset: '+1' },
+            { name: 'Londres', timezone: 'Europe/London', flag: '🇬🇧', offset: '+0' },
+            { name: 'New York', timezone: 'America/New_York', flag: '🇺🇸', offset: '-5' },
+            { name: 'Los Angeles', timezone: 'America/Los_Angeles', flag: '🇺🇸', offset: '-8' },
+            { name: 'Tokyo', timezone: 'Asia/Tokyo', flag: '🇯🇵', offset: '+9' },
+            { name: 'Sydney', timezone: 'Australia/Sydney', flag: '🇦🇺', offset: '+10' },
+            { name: 'Dubai', timezone: 'Asia/Dubai', flag: '🇦🇪', offset: '+4' },
+            { name: 'Hong Kong', timezone: 'Asia/Hong_Kong', flag: '🇭🇰', offset: '+8' },
+            { name: 'Singapour', timezone: 'Asia/Singapore', flag: '🇸🇬', offset: '+8' },
+            { name: 'Bangkok', timezone: 'Asia/Bangkok', flag: '🇹🇭', offset: '+7' },
+            { name: 'Istanbul', timezone: 'Europe/Istanbul', flag: '🇹🇷', offset: '+3' },
+            { name: 'Moscou', timezone: 'Europe/Moscow', flag: '🇷🇺', offset: '+3' }
+        ];
+
+        let clocks = [];
+
+        const addClockBtn = document.getElementById('addClockBtn');
+        const modal = document.getElementById('addClockModal');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const searchInput = document.getElementById('searchInput');
+        const timezoneList = document.getElementById('timezoneList');
+        const clocksGrid = document.getElementById('clocksGrid');
+        const emptyState = document.getElementById('emptyState');
+        const resetBtn = document.getElementById('resetBtn');
+
+        // Ouvrir modal
+        addClockBtn.addEventListener('click', () => {
+            modal.classList.add('show');
+            populateTimezoneList(timezones);
+        });
+
+        // Fermer modal
+        closeModalBtn.addEventListener('click', () => {
+            modal.classList.remove('show');
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.classList.remove('show');
+            }
+        });
+
+        // Remplir la liste des fuseaux horaires
+        function populateTimezoneList(filtered) {
+            timezoneList.innerHTML = '';
+            filtered.forEach(tz => {
+                const item = document.createElement('div');
+                item.className = 'timezone-item';
+                item.innerHTML = `
+                    <div>
+                        <span class="timezone-flag">${tz.flag}</span>
+                        <span class="timezone-item-name">${tz.name}</span>
+                    </div>
+                    <span class="timezone-item-offset">${tz.timezone}</span>
+                `;
+                item.addEventListener('click', () => addClock(tz));
+                timezoneList.appendChild(item);
+            });
+        }
+
+        // Rechercher dans les fuseaux horaires
+        searchInput.addEventListener('input', (e) => {
+            const search = e.target.value.toLowerCase();
+            const filtered = timezones.filter(tz => 
+                tz.name.toLowerCase().includes(search) || 
+                tz.timezone.toLowerCase().includes(search)
+            );
+            populateTimezoneList(filtered);
+        });
+
+        // Ajouter une horloge
+        function addClock(timezone) {
+            clocks.push(timezone);
+            renderClocks();
+            modal.classList.remove('show');
+            searchInput.value = '';
+            showToast(`${timezone.name} ajoutée!`, 'success');
+        }
+
+        // Afficher les horloges
+        function renderClocks() {
+            clocksGrid.innerHTML = '';
+            if (clocks.length === 0) {
+                emptyState.classList.remove('hidden');
+                return;
+            }
+            emptyState.classList.add('hidden');
+
+            clocks.forEach((tz, index) => {
+                const card = document.createElement('div');
+                card.className = 'clock-card';
+                card.innerHTML = `
+                    <button class="remove-btn" onclick="removeClock(${index})">×</button>
+                    <div class="clock-header">
+                        <div class="timezone-name">
+                            <span class="timezone-flag">${tz.flag}</span>
+                            <span>${tz.name}</span>
+                        </div>
+                        <span class="timezone-offset">${tz.offset}</span>
+                    </div>
+                    <div class="digital-clock" data-index="${index}">--:--:--</div>
+                    <div class="analog-clock" data-index="${index}">
+                        <div class="clock-center"></div>
+                        <div class="hour-hand clock-hand"></div>
+                        <div class="minute-hand clock-hand"></div>
+                        <div class="second-hand clock-hand"></div>
+                        <div class="clock-labels">
+                            <span class="clock-label l12">12</span>
+                            <span class="clock-label l3">3</span>
+                            <span class="clock-label l6">6</span>
+                            <span class="clock-label l9">9</span>
+                        </div>
+                    </div>
+                    <div class="clock-info">
+                        <div class="info-item">
+                            <span class="info-label">Date</span>
+                            <span class="info-value" data-date="${index}">--/--/----</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">Jour</span>
+                            <span class="info-value" data-day="${index}">---</span>
+                        </div>
+                    </div>
+                `;
+                clocksGrid.appendChild(card);
+            });
+
+            updateClocks();
+        }
+
+        // Supprimer une horloge
+        window.removeClock = function(index) {
+            clocks.splice(index, 1);
+            renderClocks();
+            showToast('Horloge supprimée', 'warning');
+        };
+
+        // Mettre à jour les horloges
+        function updateClocks() {
+            clocks.forEach((tz, index) => {
+                const time = new Date().toLocaleString('fr-FR', {
+                    timeZone: tz.timezone,
+                    hour12: document.getElementById('format12').checked,
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    second: '2-digit'
+                });
+
+                const digitalClock = document.querySelector(`[data-index="${index}"]`);
+                if (digitalClock && digitalClock.classList.contains('digital-clock')) {
+                    digitalClock.textContent = time;
+                }
+
+                // Mettre à jour la date et le jour
+                const date = new Date().toLocaleString('fr-FR', {
+                    timeZone: tz.timezone,
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit'
+                });
+
+                const day = new Date().toLocaleString('fr-FR', {
+                    timeZone: tz.timezone,
+                    weekday: 'long'
+                });
+
+                const dateElement = document.querySelector(`[data-date="${index}"]`);
+                const dayElement = document.querySelector(`[data-day="${index}"]`);
+                if (dateElement) dateElement.textContent = date;
+                if (dayElement) dayElement.textContent = day.charAt(0).toUpperCase() + day.slice(1);
+
+                // Mettre à jour l'horloge analogique
+                updateAnalogClock(index, tz.timezone);
+            });
+        }
+
+        // Mettre à jour l'horloge analogique
+        function updateAnalogClock(index, timezone) {
+            const now = new Date();
+            const formatter = new Intl.DateTimeFormat('en-US', {
+                timeZone: timezone,
+                hour: '2-digit',
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: false
+            });
+
+            const parts = formatter.formatToParts(now);
+            const hour = parseInt(parts.find(p => p.type === 'hour').value);
+            const minute = parseInt(parts.find(p => p.type === 'minute').value);
+            const second = parseInt(parts.find(p => p.type === 'second').value);
+
+            const analogClock = document.querySelector(`.analog-clock[data-index="${index}"]`);
+            if (analogClock) {
+                const hourHand = analogClock.querySelector('.hour-hand');
+                const minuteHand = analogClock.querySelector('.minute-hand');
+                const secondHand = analogClock.querySelector('.second-hand');
+
+                hourHand.style.transform = `rotate(${(hour % 12) * 30 + minute * 0.5}deg)`;
+                minuteHand.style.transform = `rotate(${minute * 6 + second * 0.1}deg)`;
+                secondHand.style.transform = `rotate(${second * 6}deg)`;
+            }
+        }
+
+        // Réinitialiser
+        resetBtn.addEventListener('click', () => {
+            clocks = [];
+            renderClocks();
+            showToast('Réinitialisation effectuée', 'info');
+        });
+
+        // Toast notification
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.className = `toast show ${type}`;
+            setTimeout(() => {
+                toast.classList.remove('show');
+            }, 3000);
+        }
+
+        // Mettre à jour les horloges toutes les secondes
+        setInterval(updateClocks, 1000);
+
+        // Initialisation - ajouter une horloge par défaut
+        addClock(timezones[0]);
+    </script>
+</body>
+</html>
